@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EIGRP Protocol">
+    <meta name="author" content="Georgi Dimitrov">
+    <title>Избор на маршрути</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Протокол EIGRP</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a href="index.html">Начало</a>
+                    </li>
+                    <li>
+                        <a href="history.html">Поява на EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="igrp_vs_eigrp.html">IGRP срещу EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="interaction_eigrp.html">Взаимодействие</a>
+                    </li>
+                    <li>
+                        <a href="select_route.html">Избор на маршрути</a>
+                    </li>
+                    <li>
+                        <a href="aboutme.html">За мен</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+    	<div class="page-header text-center">
+    		<h2>Избор на маршрути</h2>
+    	</div>
+
+        <div class="row text-justify">
+            <div class="col-lg-12">
+                <p class="">
+                	EIGRP може да използва следните метрични компоненти при избор на маршрут: честотна лента (bandwidth), delay (закъснение), reliability (надеждност), натоварване (load) и максимален размер на кадъра (MTU). По подразбиране са активирани само bandwidth и delay. 
+            	</p>
+
+              <table class="table table-hover select-route-table">
+                <thead class="thead-inverse">
+                  <tr>
+                    <th>Термин</th>
+                    <th>Дефиниция</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td><strong><em>Neighbor table</em></strong></td>
+                      <td><strong><em>Таблица на съседите:</em></strong> съдържа списък със съседните  EIGRP рутери</td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Topology table</em></strong></td>
+                      <td><strong><em>Таблица на топологията:</em></strong> съдържа списък с всички дестинации и пътища, които е научил EIGRP рутерът. Формира се като обобщение на таблиците с маршрутите на съседните рутери. За всеки рутиран протокол се генерира отделна таблица на топологията.</td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Successor</em></strong></td>
+                      <td><strong><em>Приемник:</em></strong> Най-удачния път за достигане на дадена дестинация в топологичната таблица</td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Feasible successor</em></strong></td>
+                      <td><strong><em>Осъществим приемник:</em></strong> Най-удачният резервен път за достигане на дестинация в топологичната таблица. За една дестинация може да съществуват повече от един възможни наследници</td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Routing table</em></strong></td>
+                      <td><strong><em>Таблица с маршрутите:</em></strong> Съдържа всички приемници от таблицата на топологията. За всеки рутиран протокол се генерира отделна таблица с маршрутите.</td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Advertised distance</em></strong></td>
+                      <td><strong><em>Обявено разстояние:</em></strong> Метричното разстояние, което съседен рутер е обявил за даден маршрут. </td>
+                  </tr>
+                  <tr>
+                      <td><strong><em>Feasible distance</em></strong></td>
+                      <td><strong><em>Осъществимо разстояние:</em></strong> Метричното разстояние, което рутерът ще използва за достигане на специфичен маршрут. Формира се като сбор от обявеното разстояние + метричната стойност на интерфейса на рутера. </td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr />
+              <br />
+            	<p>
+                <em>EIGRP</em> използва по опростена система от <em>OSPF</em> за изчисляване на най-добрите маршрути и съответно консумира по-малко процесорни ресурси.
+            	</p>
+            	<p>
+                <em>EIGRP</em> рутерите пазят информация за топологията в <strong><em>таблица на топологията (topology table)</em></strong>, която съдържа маршрутите, които обявяват съседните рутери, <strong><em>обявените метрични разстояния (advertised distances)</em></strong> за тези пътища и <strong><em>осъществимите разстояния (feasible distances)</em></strong> за достигане на тези маршрути през текущия рутер. <strong></em>Приемник (successor)</em></strong> е маршрут от таблицата на топологията, който има най-добри метрични показатели в сравнение с всички останали алтернативни маршрути към същата дестинация. 
+              </p>
+              <p>
+                <strong><em>Осъществим приемник (feasible successor)</em></strong>  e резервен път за достигане на дестинацията, ако приемникът не е достъпен. За да бъде един маршрут считан за осъществим приемник в таблицата на топологията метричното му разстояние в съседния рутер трябва да бъде по-малко от оригиналното му осъществимо разстояние. Ако един приемник в рутиращата таблица не е достъпен и съществува осъществим приемник <em>EIGRP</em> рутерът незабавно взема осъществимият приемник от таблицата на топологията и го копира в рутиращата таблица. Ако не съществува осъществим приемник рутерът генерира запитващо съобщение, което се изпраща на съседният или съседните рутери, които първоначално са обявили този маршрут. 
+              </p>
+            </div>
+        </div>
+
+        <!--chevron for going up!-->
+        <span id="top-link-block" class="hidden">
+            <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <i class="glyphicon glyphicon-chevron-up"></i> Нагоре?
+            </a>
+        </span><!-- /top-link-block -->
+
+        <!-- /.row -->
+        <hr />
+		<footer class="footer">
+        	<p>&copy; Георги Димитров 2016</p>
+		</footer>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fluffymunchkins.js"></script>
+
+</body>
+
+</html>

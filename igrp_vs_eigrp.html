@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EIGRP Protocol">
+    <meta name="author" content="Georgi Dimitrov">
+    <title>Протокол EIGRP</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Протокол EIGRP</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a href="index.html">Начало</a>
+                    </li>
+                    
+                    <li>
+                        <a href="history.html">Поява на EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="igrp_vs_eigrp.html">IGRP срещу EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="interaction_eigrp.html">Взаимодействие</a>
+                    </li>
+                    <li>
+                        <a href="select_route.html">Избор на маршрути</a>
+                    </li>
+                    <li>
+                        <a href="aboutme.html">За мен</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+    	<div class="page-header text-center">
+    		<h2>Сравнение между IGRP и EIGRP</h2>
+    	</div>
+
+        <div class="row text-justify">
+            <div class="col-lg-12">
+                <p>
+                    <ul class="list-unstyled">
+                		<li> - И двата протокола поддържат load balancing едновременнo върху 6 маршрута (равностойни или неравностойни);</li>
+                		<li> - EIGRP поддържа по-бърза <span class="dotted" data-placement="top" data-toggle="popover" data-trigger="hover" data-content="времето, което отнема, за да се обработят промените в мрежата и да се влезе отново в оперативен режим">конвергенция</span> - дължащата се частично на локалното записване на таблиците с маршрути на съседните рутери;</li>
+                		<li> - EIGRP използва по-малко мрежови ресурси;</li>
+                		<li> - Имат подобни метрични структури: използват bandwidth, delay, reliability, and MTU при изчисляване на най-добрия метричен път. По подразбиране се използват само bandwidth и delay</li>
+                	</ul>
+            	</p>
+            	<p>
+            		1. Ако в една мрежа има рутери, които използват EIGRP и такива, които използват IGRP и имат еднакъв AS номер (номер на автономна система), те автоматично ще обменят рутиращата информация. 
+Въпреки, че използват същите метрични компоненти двата протокола се различават по размера на полето, в което се съхраняват – EIGRP използва 32 битови метрични стойности, докато IGRP използва 24 битови. Когато протоколите се използват съвместно EIGRP-маршрутите се делят на 256 за да се „поберат” в 24 битова метрична структура на IGRP и съответно IGRP-маршрутите се умножават по 256 за да се съвместят с 32 битовата структура на EIGRP.
+            	</p>
+                <!--<br />-->
+            	<p>
+                    2. EIGRP използва Diffusing Update алгоритъм (DUAL) за обновяване на таблицата с маршрутите в рутера. Този алгоритъм позволява изключително бърза конвергенция, като съхранява в локална топологична схема информацията за таблиците с маршрутите на съседните рутери. Ако основната таблица с маршрути отпадне DUAL може да използва резервен маршрут директно от топологичната схема и да го запише в таблицата с маршрути без да се налага да се обръща към съседни EIGRP рутери за да намери алтернативен път към дестинацията.
+                </p>
+                <p>
+                    3. За разлика от IGRP, EIGRP поддържа едновременно автоматично и ръчно обобщаване (summarization).  По подразбиране EIGRP автоматично обобщава маршрути върху мрежи от класове А, В и С. Освен това при конфигурирането му се позволява ръчно обобщаване на пътищата.
+                </p>
+                <p>
+                    4. Една от уникалните характеристики на EIGRP е, че той поддържа три рутирани протокола – IP, IPX и AppleTalk, като може да ги обслужва едновременно. Това намалява общото натоварване на рутера при използване и на трите протокола,  тъй като не се налага да се използва отделен рутиращ протокол за всеки рутиран протокол откъдето се намаляват и стартираните процеси.
+                </p>
+                <p>
+                    За взаимодействие с други EIGRP рутери натиснете <a href="interaction_eigrp.html">тук.</a>
+                </p>
+            </div>
+        </div>
+
+        <!--chevron for going up!-->
+        <span id="top-link-block" class="hidden">
+            <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <i class="glyphicon glyphicon-chevron-up"></i> Нагоре?
+            </a>
+        </span><!-- /top-link-block -->
+
+        <!-- /.row -->
+        <hr />
+		<footer class="footer">
+        	<p>&copy; Георги Димитров 2016</p>
+		</footer>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fluffymunchkins.js"></script>
+
+</body>
+
+</html>

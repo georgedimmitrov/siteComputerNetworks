@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EIGRP Protocol">
+    <meta name="author" content="Georgi Dimitrov">
+    <title>Протокол EIGRP</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Протокол EIGRP</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a href="index.html">Начало</a>
+                    </li>
+                    
+                    <li>
+                        <a href="history.html">Поява на EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="igrp_vs_eigrp.html">IGRP срещу EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="interaction_eigrp.html">Взаимодействие</a>
+                    </li>
+                    <li>
+                        <a href="select_route.html">Избор на маршрути</a>
+                    </li>
+                    <li>
+                        <a href="aboutme.html">За мен</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+    	<div class="page-header text-center">
+    		<h2>Взаимодействие с други EIGRP рутери</h2>
+    	</div>
+
+        <div class="row text-justify">
+            <div class="col-lg-12">
+                <p>
+                    1. EIGRP използва “hello” пакети за да установи и поддържа връзки със съседни рутери подобно на OSPF.  EIGRP генерира “hello” пакети на всеки 5 секунди при използване върху локални мрежи, point-to-point и multipoint връзки, където скоростта е над 1.544 Mbit/s (при разработката му са отчетени скоростите на Т1/Е1 връзките). При по-бавни скорости „hello” пакетите се генерират на всеки 60 секунди. Времето за отчитане на „нулева” активност (dead interval period) е три пъти колкото интервалът между изпращането на “hello” пакети, т.е. 15 секунди при връзките с бързина над 1.544 MBit/s и 180 секунди при по-бавните. При изпращане на “hello” пакетите EIGRP използва мултикаст адрес 224.0.0.10 за дестинация.
+            	</p>
+                <p>
+                    2. За да станат два рутера съседни е необходима следната информация:
+                    <ul class="list-unstyled">
+                        <li> - Номерът на автономната система (AS Number)</li>
+                        <li> - Стойностите който включват или изключват различните метрични компоненти (K-Values)</li>
+                    </ul>
+                    <br />
+                    За разлика от OSPF интервалите за изпращане на “hello’ пакети и за отчитане на „нулева” активност не необходимо да съвпадат с тези на другите рутери. Когато два рутера установяват дали да станат съседи протича следният процес:
+                    <ol>
+                        <li>Първият рутер генерира “hello” с конфигурационна информация.</li>
+                        <li>Ако конфигурационната информация съвпада, вторият рутер отговаря със съобщение, което съдържа информация за топологията.</li>
+                        <li>Първият рутер отговаря с потвърждаващо съобщение (АСК), че е получил информацията.</li>
+                        <li>Първият рутер също изпраща топологията си на вторият.</li>
+                        <li>Вторият рутер отговаря с ACK. </li>
+                    </ol>
+                    <br />
+                    След последната стъпка двата рутера вече са съседи. Този процес се различава от OSPF, където рутиращата информация се разпространява чрез специално предназначен за целта рутер. При EIGRP всеки рутер може да споделя рутираща информация с всеки друг рутер. Както се вижда, EIGRP е ориентиран към връзката протокол: при изпратени съобщения, ще се очаква потвърждение (ACK). Тези съобщения са следните:
+                    <ul class="list-unstyled">
+                        <li> - <strong>Update</strong> - съдържа таблица с маршрутите</li>
+                        <li> - <strong>Query </strong> - Изисква от другия рутер обновяване на  рутиращата информация</li>
+                        <li> - <strong>Reply</strong> - Отговаря на предното съобщение</li>
+                    </ul>
+                    <br />
+                    Ако EIGRP рутер не получи потвърждение на тези три типа пакети, рутерът ще се опита общо 16 пъти да изпрати информацията, след което се приема, че съседният рутер не отговаря. Когато рутер изпрати “hello” пакет не се очаква ACK.
+                </p>
+
+            
+                <p>
+                    За избор на маршрути натиснете <a href="select_route.html">тук.</a>
+                </p>
+            </div>
+        </div>
+
+        <!--chevron for going up!-->
+        <span id="top-link-block" class="hidden">
+            <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <i class="glyphicon glyphicon-chevron-up"></i> Нагоре?
+            </a>
+        </span><!-- /top-link-block -->
+
+        <!-- /.row -->
+        <hr />
+		<footer class="footer">
+        	<p>&copy; Георги Димитров 2016</p>
+		</footer>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fluffymunchkins.js"></script>
+
+</body>
+
+</html>

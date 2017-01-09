@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EIGRP Protocol">
+    <meta name="author" content="Georgi Dimitrov">
+    <title>Протокол EIGRP</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Протокол EIGRP</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a href="index.html">Начало</a>
+                    </li>
+                    <li>
+                        <a href="history.html">Поява на EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="igrp_vs_eigrp.html">IGRP срещу EIGRP</a>
+                    </li>
+                    <li>
+                        <a href="interaction_eigrp.html">Взаимодействие</a>
+                    </li>
+                    <li>
+                        <a href="select_route.html">Избор на маршрути</a>
+                    </li>
+                    <li>
+                        <a href="aboutme.html">За мен</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+    	<div class="page-header text-center">
+    		<h2>Обща информация за протокол EIGRP</h2>
+    	</div>
+
+        <div class="row text-justify">
+            <div class="col-lg-12">
+                <p class="">
+                	EIGRP Enhanced Interior Gateway Routing Protocol (Разширен вътрешен <span class="dotted" data-placement="top" data-toggle="popover" data-trigger="hover" data-title="Маршрутизиращ протокол" data-content="Определя как маршрутизаторите в дадена мрежа обменят информация един с друг и съобщават за възникнали промени">маршрутизиращ протокол</span>) е разработен от Cisco Systems. От 2013 година насам, EIGRP е отворен стандарт, а от компанията мотивират решението си с думите, че вече всеки клиент ще може сам да прецени кой протокол би му свършил най-добра работа, базирано, на вече общодостъпните, техническите детайли и характеристики на стандарта.
+            	</p>
+            	<p>
+            		Протоколът е базиран на IGRP (вътрешен маршрутизиращ протокол), като са въведени много подобрения. Конфигурирането му е подобно на IGRP, но с много характеристики отнасящи се до състоянието на връзката <em>(link-state)</em>, които са добавени, за да позволят на EIGRP да обслужва по-големи корпоративни мрежи.
+            		<img src="images/Cisco.png" width="200px" alt="Cisco Logo" class="pull-right" />
+            	</p>
+            	<br />
+            	<p>
+            		Тези характеристики включват: 
+                	<ul class="list-unstyled">
+                		<li> - Бърза конвергенция - времето, което отнема, за да се обработят промените в мрежата и да се влезе отново в оперативен режим</li>
+                		<li> - Свободна от цикли (loops) топология</li>
+                		<li> - <span class="dotted" data-placement="top" data-toggle="popover" data-trigger="hover" data-content="VLSM - Variable Length Subnet Masks">VLSM</span> - вариращи по дължина събнет маски и обобщение на маршрутите</li>
+                		<li> - Многоплатформен и многопротоколен (Multicast)</li>
+                		<li> - Намиране на маршрути едновременно за няколко маршрутизиращи протоколи (routed protocols)</li>
+                	</ul>
+                </p>
+                <p>
+                	<img src="images/eigrplab.jpg" alt="Eigrp Lab" class="pull-left col-sm-8" width="600px" />
+                	<ul class="list-unstyled pull-right text-justify col-sm-4">
+                		<li> - Архитектурата на EIGRP е <strong>модулна</strong> - разработен е компонентно
+                		</li>
+                		<hr />
+                		<li> - За разлика от други протоколи EIGRP изпраща само инкрементални обновления, като по този начин намалява натоварването на маршрутизатора и количеството данни, които трябва да се изпратят
+                		</li>
+                		<hr />
+                		<li> - Както вече споменах, през 2013 година EIGRP бе превърнат в отворен стандарт, защото е публкуван с информационен статут като <span class="dotted" data-placement="top" data-toggle="popover" data-trigger="hover" data-content="RFC - Request for Comments">RFC</span>RFC, което ще рече, че Cisco дават публичен достъп до използваните методи за разработката на протокола, както и обяснения за поведението му. Като за това може да се уверим <a class="dotted" target="_blank" href="https://tools.ietf.org/html/rfc7868">тук</a></li>
+                	</ul>
+                </p>
+                <div class="clearfix"></div> 
+                <p>
+                    Преди да навляза в подробности за EIGRP, нека се запознаем накратко с причините за появяването на протокола и <a href="history.html">кратка история.</a> 
+                </p>
+                <p>
+                    А ако желаете малко повече информация за формата на съобщението <a href="message_format.html">тук.</a>
+                </p>
+            </div>
+        </div>
+
+        <!--chevron for going up!-->
+        <span id="top-link-block" class="hidden">
+            <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <i class="glyphicon glyphicon-chevron-up"></i> Нагоре?
+            </a>
+        </span><!-- /top-link-block -->
+
+        <!-- /.row -->
+        <hr />
+		<footer class="footer">
+        	<p>&copy; Георги Димитров 2016</p>
+		</footer>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fluffymunchkins.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+body {
+    padding-top: 70px;
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+table th {
+	text-align: center;
+}
+
+.dotted {
+  border-bottom: 1px dashed #999;
+  text-decoration: none; 
+}
+
+#historyTimeline {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.thead-inverse th {
+    color: #fff;
+    background-color: #373a3c;
+    border-color: #373a3c;
+}
+
+table.select-route-table tbody tr td:first-child {
+  min-width: 150px;
+  border-color: #373a3c;
+}
+
+table.select-route-table tbody tr td:last-child {
+  background-color: #d4dbda;
+  border-color: #373a3c;
+}
+
+#top-link-block.affix-top {
+    position: absolute; /* allows it to "slide" up into view */
+    bottom: -82px; /* negative of the offset - height of link element */
+    right: 10px; /* padding from the right side of the window */
+}
+
+#top-link-block.affix {
+    position: fixed; /* keeps it on the bottom once in view */
+    bottom: 18px; /* height of link element */
+    right: 10px; /* padding from the right side of the window */
+}
