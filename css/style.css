@@ -52,8 +52,7 @@ table.select-route-table tbody tr td:last-child {
   text-align: center;
 }
 
-@-webkit-keyframes swing
-{
+@-webkit-keyframes swing {
     15%
     {
         -webkit-transform: translateX(5px);
@@ -85,8 +84,8 @@ table.select-route-table tbody tr td:last-child {
         transform: translateX(0);
     }
 }
-@keyframes swing
-{
+
+@keyframes swing {
     15%
     {
         -webkit-transform: translateX(5px);
@@ -119,8 +118,7 @@ table.select-route-table tbody tr td:last-child {
     }
 }
 
-.thank-you:hover
-{
+.thank-you:hover {
         -webkit-animation: swing 1s ease;
         animation: swing 1s ease;
         -webkit-animation-iteration-count: 1;
